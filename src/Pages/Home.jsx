@@ -1,10 +1,13 @@
 import React from 'react';
+import Feature from '../Components/Feature';
 
 const Home = () => {
     return (
-        <div>
-            
-        </div>
+        <main>
+            <section>
+                <Feature />
+            </section>
+        </main>
     );
 };
 
