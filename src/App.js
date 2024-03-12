@@ -5,6 +5,7 @@ import Sign from "../src/Pages/Sign.jsx";
 import Error from "../src/Pages/Error.jsx";
 import Footer from "./Components/Footer.jsx";
 import Nav from "./Components/Nav.jsx";
+import Users from "./Pages/Users.jsx";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/sign" element={<Sign />} />
         <Route path="/*" element={<Error />} />
+        <Route path="/users" element={<Users />} />
       </Routes>
       <Footer />
     </Router>
