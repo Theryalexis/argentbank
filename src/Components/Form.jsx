@@ -16,7 +16,7 @@ const Form = () => {
               >Remember me</label
             >
           </div>
-          <a href="./user.html" class="sign-in-button">Sign In</a>
+          <a href="./users" class="sign-in-button">Sign In</a>
           <button class="sign-in-button">Sign In</button>
         </div>
     );
