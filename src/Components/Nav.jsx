@@ -1,25 +1,55 @@
-import React from 'react';
-import Logo from "../Assets/img/argentBankLogo.png";
+import { useDispatch, useSelector } from "react-redux";
+import logo from "../Assets/img/argentBankLogo.png";
+import { logout } from '../Redux/reducers/authSlice';
+import { Link, useNavigate } from "react-router-dom";
 
-const Nav = () => {
+
+function Nav() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.auth.user);  
+  const token = useSelector((state) => state.auth.token);
+
+  const handleLogout = () => {
+    navigate('/')
+    // Dispatchez l'action de déconnexion ici
+    dispatch(logout());    
+  };
+      
     return (
-        <nav class="main-nav">
-      <a class="main-nav-logo" href="./">
-        <img
-          class="main-nav-logo-image"
-          src={Logo}
-          alt="Argent Bank Logo"
-        />
-        <h1 class="sr-only">Argent Bank</h1>
-      </a>
-      <div>
-        <a class="main-nav-item" href="./sign">
-          <i class="fa fa-user-circle"></i>
-          Sign In
-        </a>
-      </div>
-    </nav>
+        <nav className="main-nav">
+          <Link to="/" className="main-nav-logo">
+          <img
+              className="main-nav-logo-image"
+              src={logo}
+              alt="Argent Bank Logo"
+            />
+            <h1 className="sr-only">Argent Bank</h1>
+          </Link>          
+          <div>
+          {token ? (
+            <div className="main-nav-auth">
+              <div className="main-nav-auth-profil">{user.userName}</div>
+              <div>
+                <i className="fa-solid fa-user"></i>
+                <i className="fa-solid fa-gear"></i>
+              </div>
+              {token && (
+                <Link className="main-nav-item" to="/" onClick={handleLogout}>
+                  Logout
+                </Link>
+              )}               
+            </div>
+            
+          ) : (
+            <a className="main-nav-item" href={"./sign"} >
+              <i className="fa fa-user-circle"></i>
+              Sign In
+            </a>
+          )}
+          </div>
+      </nav>
     );
-};
-
-export default Nav;
+  };
+  
+  export default Nav;
