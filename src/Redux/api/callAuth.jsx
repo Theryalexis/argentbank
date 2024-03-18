@@ -28,7 +28,7 @@ export const signIn = async (username, password, dispatch, navigate) => {
       // Dispatche le token dans le Redux store
       dispatch(setToken(token));           
 
-      navigate('/user');
+      navigate('/users');
     } else {
       // Affiche une erreur en cas de problème avec la requête de connexion.
       console.error('Erreur lors de la requête de connexion:', response.status, response.statusText);
