@@ -6,8 +6,11 @@ import Error from "../src/Pages/Error.jsx";
 import Footer from "./Components/Footer.jsx";
 import Nav from "./Components/Nav.jsx";
 import Users from "./Pages/Users.jsx";
+import { useSelector } from "react-redux";
 
 function App() {
+  const token = useSelector((state) => state.auth.token);
+
   return (
     <Router>
       <Nav />
@@ -15,7 +18,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/sign" element={<Sign />} />
         <Route path="/*" element={<Error />} />
-        <Route path="/users" element={<Users />} />
+        <Route path="/users" element={token ? <Users /> : <Error />} />
       </Routes>
       <Footer />
     </Router>
