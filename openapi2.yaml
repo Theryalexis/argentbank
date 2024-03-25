@@ -239,4 +239,5 @@ definitions:
       note:
         type: string
       date:
+        type: string
         format: date-time
